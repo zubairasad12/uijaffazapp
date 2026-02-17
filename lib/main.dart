@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: color,
-            elevatedButtonTheme: ElevatedButtonThemeData(
+            elevatedButtonTheme:ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(backgroundColor: color),
             ),
           ),
