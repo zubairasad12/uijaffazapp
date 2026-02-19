@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
+
 import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -15,12 +17,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool isChecked = false;
   bool loading = false;
 
-  // controllers
   final TextEditingController nameCtrl = TextEditingController();
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
 
-  // 🔗 REGISTER API
   Future<void> registerUser() async {
     if (!isChecked) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -50,7 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("✅ Register Successful")),
+          const SnackBar(content: Text(" Register Successful")),
         );
 
         Navigator.pushReplacement(
@@ -103,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Image.asset('assets/images/chef.png', height: 140),
                     const SizedBox(height: 10),
 
-                    // tabs
+                    
                     Container(
                       height: 50,
                       decoration: BoxDecoration(

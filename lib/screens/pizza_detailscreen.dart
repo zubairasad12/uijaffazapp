@@ -28,7 +28,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
                   IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      Navigator.pop(context); // ✅ correct back
+                      Navigator.pop(context); 
                     },
                   ),
                   const Text(
@@ -42,7 +42,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
 
             const SizedBox(height: 10),
 
-            /// 🍕 IMAGE
+        
             Image.asset(
               'assets/images/pizza.png',
               height: 180,
@@ -51,7 +51,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
 
             const SizedBox(height: 16),
 
-            /// ⬜ DETAILS CARD
+            
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -67,7 +67,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /// TITLE + PRICE
+                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -91,7 +91,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
 
                       const SizedBox(height: 8),
 
-                      /// ⭐ RATING
+                  
                       Row(
                         children: const [
                           Icon(Icons.star, color: Colors.green, size: 18),
@@ -107,7 +107,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
 
                       const SizedBox(height: 16),
 
-                      /// 📄 DESCRIPTION
+                  
                       const Text(
                         "Description",
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -124,7 +124,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
 
                       const SizedBox(height: 20),
 
-                      /// ➕➖ QUANTITY
+                  
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -176,7 +176,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
 
                       const SizedBox(height: 24),
 
-                      /// 🟢 ACTION BUTTON
+                
                       SizedBox(
                         width: double.infinity,
                         height: 45,
@@ -188,7 +188,7 @@ class _PizzaDetailscreenState extends State<PizzaDetailscreen> {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pop(context); // ✅ go back to Home
+                            Navigator.pop(context); 
                           },
                           child: const Text(
                             "Back to Home",

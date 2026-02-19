@@ -27,7 +27,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            /// 🔝 APP BAR
+        
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
@@ -48,7 +48,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
 
             const SizedBox(height: 10),
 
-            /// 🧾 CONTENT
+      
             Expanded(
               child: isEmpty
                   ? _emptyCartUI()
@@ -78,7 +78,6 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                     ),
             ),
 
-            /// 💰 TOTAL (sirf tab jab cart empty na ho)
             if (!isEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -129,8 +128,6 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
       ),
     );
   }
-
-  /// 🧾 SINGLE ITEM
   Widget _orderItem({
     required CartItem item,
     required Color green,
@@ -202,7 +199,6 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
     );
   }
 
-  /// 🛒 EMPTY CART UI
   Widget _emptyCartUI() {
     return Center(
       child: Column(
@@ -218,7 +214,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
           ),
           SizedBox(height: 6),
           Text(
-            "Add some delicious food 🍔🍕",
+            "Add some delicious food ",
             style: TextStyle(color: Colors.grey),
           ),
         ],

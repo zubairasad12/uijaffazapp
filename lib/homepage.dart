@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:uijaffazapp/screens/details_screen.dart';
 import 'package:uijaffazapp/screens/login.dart';
 import 'package:uijaffazapp/screens/my_order_screen.dart';
 import 'package:uijaffazapp/services/api_services.dart';
@@ -108,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    /// 🔥 Categories
+                    
                     SizedBox(
                       height: 30,
                       child: ListView.builder(
@@ -132,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    /// 🔥 Food Items
+                    
                     Expanded(
                       child: GridView.builder(
                         itemCount: foodItems.length,
@@ -145,31 +148,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         itemBuilder: (context, index) {
                           final item = foodItems[index];
+return InkWell(
+  borderRadius: BorderRadius.circular(20),
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) =>  DetailsScreen(foodItem: item),
+      ),
+    );
+  },
+  child: ProductCard(
+    title: item['name'],
+    rating: "5.0",
+    price: item['price'].toString(),
+    imageUrl: item['image'] ?? '',
+    onAdd: () {
+      addToCart(
+        CartItem(
+          title: item['name'],
+          image: item['image'] ?? '',
+          price: double.parse(item['price'].toString()),
+        ),
+      );
 
-                          return ProductCard(
-                            title: item['name'],
-                            rating: "5.0",
-                            price: item['price'].toString(),
-                            imageUrl: item['image'] ?? '',
-                            onAdd: () {
-                              addToCart(
-                                CartItem(
-                                  title: item['name'],
-                                  image: item['image'] ?? '',
-                                  price: double.parse(
-                                      item['price'].toString()),
-                                ),
-                              );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) =>
+              MyOrderScreen(cartItems: cartItems),
+        ),
+      );
+    },
+  ),
+);
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) =>
-                                      MyOrderScreen(cartItems: cartItems),
-                                ),
-                              );
-                            },
-                          );
                         },
                       ),
                     ),
@@ -239,12 +252,16 @@ class ProductCard extends StatelessWidget {
 
         Expanded(
   child: Image.network(
-  "http://localhost:8000/storage/images/20260211071417.png",
-  fit: BoxFit.cover,
+    imageUrl.startsWith("http")
+        ? imageUrl.replaceAll("127.0.0.1", "localhost")
+        : "http://localhost:8000/storage/$imageUrl",
+    fit: BoxFit.cover,
+    errorBuilder: (context, error, stackTrace) {
+      return const Icon(Icons.fastfood, size: 60);
+    },
+  ),
 ),
 
-    
-),
 
 
 

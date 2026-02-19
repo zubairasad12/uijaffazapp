@@ -19,7 +19,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
       body: SafeArea(
         child: Column(
           children: [
-            /// 🔝 TOP BAR
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
@@ -28,7 +28,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
                   IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      Navigator.pop(context); // ✅ correct back
+                      Navigator.pop(context); 
                     },
                   ),
                   const Text(
@@ -42,7 +42,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
 
             const SizedBox(height: 10),
 
-            /// 🍟 IMAGE
+            
             Image.asset(
               'assets/images/fries.png',
               height: 180,
@@ -51,7 +51,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
 
             const SizedBox(height: 16),
 
-            /// ⬜ DETAILS CARD
+        
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -91,7 +91,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
 
                       const SizedBox(height: 8),
 
-                      /// ⭐ RATING
+                    
                       Row(
                         children: const [
                           Icon(Icons.star, color: Colors.green, size: 18),
@@ -175,7 +175,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
 
                       const SizedBox(height: 24),
 
-                      /// 🟢 ACTION BUTTON
+                
                       SizedBox(
                         width: double.infinity,
                         height: 45,
@@ -187,7 +187,7 @@ class _FriesDetailscreenState extends State<FriesDetailscreen> {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pop(context); // ✅ back to Home
+                            Navigator.pop(context); 
                           },
                           child: const Text(
                             "Back to Home",

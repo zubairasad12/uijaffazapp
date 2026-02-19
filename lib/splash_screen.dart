@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:uijaffazapp/homepage.dart';
+
 import 'package:uijaffazapp/screens/login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ void initState() {
     duration: const Duration(seconds: 2),
   );
 
-  _controller.forward(); // ✅ YAHAN
+  _controller.forward(); 
 
   Timer(const Duration(seconds: 3), () {
     Navigator.pushReplacement(

@@ -1,35 +1,37 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
+
 import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uijaffazapp/colors/color_picker_screen.dart';
 import 'package:uijaffazapp/homepage.dart';
+import 'package:uijaffazapp/screens/forget_screen.dart';
 import 'package:uijaffazapp/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
- 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   bool check = false;
-  // controllers
+  
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
 
   bool loading = false;
   bool rememberMe = false;
 
-  // 🔗 LOGIN API
+  //login function
   Future<void> loginUser() async {
     setState(() => loading = true);
 
     try {
       final response = await http.post(
-        Uri.parse("http://127.0.0.1:8000/api/login"), // emulator
+        Uri.parse("http://127.0.0.1:8000/api/login"), 
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
@@ -43,11 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        // agar token aata hai to yahan mil jayega
-        // final token = data['token'];
+       
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("✅ Login Successful")),
+          const SnackBar(content: Text(" Login Successful")),
         );
 
         Navigator.pushReplacement(
@@ -60,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       }
     } catch (e) {
+    
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: $e")),
       );
@@ -83,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+      
             child: Container(color: Colors.white.withOpacity(0.1)),
           ),
           Center(
@@ -91,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
+                 
                   color: Colors.white.withOpacity(0.85),
                   borderRadius: BorderRadius.circular(24),
                 ),
@@ -112,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                    // tabs
+                
                     Container(
                       height: 50,
                       decoration: BoxDecoration(
@@ -181,10 +185,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const Text("Remember Me"),
                         const Spacer(),
-                        const Text(
-                          "Forgot Password ?",
-                          style: TextStyle(color: Colors.deepOrange),
+                       
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ForgetScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Forgot Password ?",
+                            style: TextStyle(color: Colors.deepOrange),
+                          ),
                         ),
+                        
                       ],
                     ),
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key});
+  const DetailsScreen({super.key, required foodItem});
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -16,7 +16,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            /// 🔝 TOP BAR
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
@@ -25,7 +25,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      Navigator.pop(context); // ✅ correct back
+                      Navigator.pop(context); 
                     },
                   ),
                   const Text(
@@ -39,7 +39,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
             const SizedBox(height: 10),
 
-            /// 🍔 PRODUCT IMAGE
+          
             Image.asset(
               'assets/images/burger1.png',
               height: 180,
@@ -48,7 +48,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
             const SizedBox(height: 16),
 
-            /// ⬜ DETAILS CARD
+        
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -71,7 +71,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                       const SizedBox(height: 6),
 
-                      /// TITLE + PRICE
+                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -95,7 +95,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                       const SizedBox(height: 8),
 
-                      /// ⭐ RATING
+              
                       Row(
                         children: const [
                           Icon(Icons.star, color: Colors.green, size: 18),
@@ -111,7 +111,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                       const SizedBox(height: 16),
 
-                      /// 📄 DESCRIPTION
+                  
                       const Text(
                         "Description",
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -128,7 +128,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                       const SizedBox(height: 20),
 
-                      /// ➕➖ QUANTITY
+    
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -180,7 +180,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                       const SizedBox(height: 24),
 
-                      /// 🟢 ACTION BUTTON
+                  
                       SizedBox(
                         width: double.infinity,
                         height: 45,
@@ -192,7 +192,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pop(context); // ✅ back to Home
+                            Navigator.pop(context); 
                           },
                           child: const Text(
                             "Back to Home",
