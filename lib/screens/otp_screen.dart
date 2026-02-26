@@ -1,10 +1,8 @@
-// ignore_for_file: use_build_context_synchronously
+
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uijaffazapp/homepage.dart';
-import 'dart:convert';
-import 'package:uijaffazapp/screens/login.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -103,7 +101,7 @@ Future<void> verifyOtp(String otp) async {
                         decoration: InputDecoration(
                           counterText: "",
                           filled: true,
-                          fillColor: const Color(0xFFF6F6F6),
+                          fillColor: const Color.fromARGB(255, 139, 135, 135),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                             borderSide: BorderSide.none,

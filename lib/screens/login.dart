@@ -1,5 +1,5 @@
 // ignore_for_file: use_build_context_synchronously, deprecated_member_use
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -24,51 +24,53 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool loading = false;
   bool rememberMe = false;
+Future<void> loginUser() async {
+  setState(() => loading = true);
 
-  //login function
-  Future<void> loginUser() async {
-    setState(() => loading = true);
+  try {
+    final response = await http.post(
+      Uri.parse("http://127.0.0.1:8000/api/login"),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: jsonEncode({
+        "email": emailCtrl.text,
+        "password": passCtrl.text,
+      }),
+    );
 
-    try {
-      final response = await http.post(
-        Uri.parse("http://127.0.0.1:8000/api/login"), 
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: jsonEncode({
-          "email": emailCtrl.text,
-          "password": passCtrl.text,
-        }),
+    final data = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+
+      // ✅ TOKEN SAVE KARO
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', data['token']);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text(" Login Successful")),
       );
 
-      final data = jsonDecode(response.body);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const HomeScreen()),
+      );
 
-      if (response.statusCode == 200) {
-       
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text(" Login Successful")),
-        );
-
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const HomeScreen()),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(data['message'] ?? "Invalid credentials")),
-        );
-      }
-    } catch (e) {
-    
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error: $e")),
+    } else {
+       ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(data['message'] ?? "Invalid credentials")),
       );
     }
-
-    setState(() => loading = false);
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Error: $e")),
+    );
   }
+
+  setState(() => loading = false);
+}
+    
 
   @override
   Widget build(BuildContext context) {

@@ -74,8 +74,6 @@ class _ForgetScreenState extends State<ForgetScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
             
-                // 👇 tumhara existing UI same rahega
-            
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(

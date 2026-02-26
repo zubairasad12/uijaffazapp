@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+
 
 import 'package:flutter/material.dart';
 import 'package:uijaffazapp/screens/details_screen.dart';
@@ -198,7 +198,6 @@ class CategoryChip extends StatelessWidget {
   final String title;
 
   const CategoryChip({super.key, required this.title});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -214,7 +213,6 @@ class CategoryChip extends StatelessWidget {
     );
   }
 }
-
 class ProductCard extends StatelessWidget {
   final String title;
   final String rating;
@@ -230,11 +228,9 @@ class ProductCard extends StatelessWidget {
     required this.imageUrl,
     required this.onAdd,
   });
-
   @override
   Widget build(BuildContext context) {
     final Color primaryGreen = Theme.of(context).primaryColor;
-
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -254,18 +250,13 @@ class ProductCard extends StatelessWidget {
   child: Image.network(
     imageUrl.startsWith("http")
         ? imageUrl.replaceAll("127.0.0.1", "localhost")
-        : "http://localhost:8000/storage/$imageUrl",
+        : "http://127.0.0.1:8000/storage/$imageUrl",
     fit: BoxFit.cover,
     errorBuilder: (context, error, stackTrace) {
       return const Icon(Icons.fastfood, size: 60);
     },
   ),
 ),
-
-
-
-
-
           const SizedBox(height: 8),
           Row(
             children: [
